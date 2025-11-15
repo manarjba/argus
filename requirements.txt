@@ -1,0 +1,12 @@
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+alembic==1.12.1
+python-dotenv==1.0.0
+openai==0.28.1  # Downgrade to stable version
+feedparser==6.0.10
+requests==2.31.0
+pydantic==1.10.12  # Downgrade for compatibility
+aiohttp==3.8.5  # Add for async requests
+groq
