@@ -1,46 +1,285 @@
-# Getting Started with Create React App
+Argus Cybersecurity Threat Intelligence Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Status
 
-## Available Scripts
+Python
 
-In the project directory, you can run:
+FastAPI
 
-### `npm start`
+React
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+AI
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Argus is an AI-driven cybersecurity threat intelligence platform that collects, analyzes, and prioritizes security threats from multiple sources. It delivers real-time threat intelligence, automated analysis, and actionable insights for security teams.
 
-### `npm test`
+Features
+Core Capabilities
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Automated threat collection with real-time RSS feed monitoring
 
-### `npm run build`
+AI-powered threat analysis using Groq
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+IOC extraction including IPs, domains, and hashes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Professional React-based dashboard
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Advanced search and filtering capabilities
 
-### `npm run eject`
+Threat Intelligence
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Real-time monitoring of multiple cybersecurity feeds
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Automated classification of threats (e.g., ransomware, phishing, zero-day)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Severity scoring with defined risk levels
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Structured IOC management
 
-## Learn More
+Analytics and Reporting
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Real-time dashboard metrics
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Threat filtering and search capabilities
+
+Batch processing of multiple articles
+
+System monitoring and status endpoints
+
+Architecture
+Argus Platform
+├── Backend (FastAPI)
+│   ├ RESTful API
+│   ├ SQLAlchemy ORM with PostgreSQL/SQLite
+│   ├ AI processing with Groq
+│   ├ RSS feed ingestion
+│   └ IOC extraction
+├── Frontend (React + TypeScript)
+│   ├ Threat dashboard
+│   ├ Search and filtering
+│   ├ Severity-based threat cards
+│   └ Responsive design
+└── Processing Pipeline
+    ├ Collection → Analysis → IOC Extraction
+    ├ Batch processing
+    └ Real-time updates
+
+Technology Stack
+Backend
+
+Python 3.8+
+
+FastAPI
+
+SQLAlchemy
+
+Groq AI
+
+Uvicorn
+
+Pydantic
+
+Alembic
+
+Frontend
+
+React 18
+
+TypeScript
+
+Axios
+
+CSS3
+
+AI and Processing
+
+Groq API for inference
+
+NLP pipelines for classification
+
+Regex-based IOC detection
+
+Batch analysis
+
+Installation and Setup
+Prerequisites
+
+Python 3.8+
+
+Node.js 16+
+
+Groq API account
+
+Backend Setup
+cd backend
+python -m venv venv
+source venv/bin/activate       # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env
+python -c "from app.database import Base, engine; Base.metadata.create_all(bind=engine)"
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+Frontend Setup
+cd frontend
+npm install
+npm start
+
+Access
+
+Frontend: http://localhost:3000
+
+API Docs: http://localhost:8000/docs
+
+Health Check: http://localhost:8000/health
+
+Configuration
+
+Create a .env file in the backend directory:
+
+DATABASE_URL=sqlite:///./argus.db
+GROQ_API_KEY=your_groq_api_key_here
+SECRET_KEY=your_secret_key
+
+RSS Sources
+
+The platform monitors:
+
+The Hacker News
+
+Krebs on Security
+
+CVE databases
+
+Additional configurable sources
+
+Usage
+Basic Operations
+
+Fetch new threats via the dashboard
+
+AI analysis for classification and severity
+
+Full-text search and filtering
+
+View IOCs extracted from articles
+
+Example API Endpoints
+Endpoint	Method	Description
+/api/v1/articles	GET	Retrieve all threats
+/api/v1/articles/{id}	GET	Retrieve a specific threat
+/api/v1/operations/fetch-articles	POST	Fetch new threats
+/api/v1/articles/{id}/process	POST	AI process a specific threat
+/api/v1/batch/process-all	POST	Process all unprocessed threats
+/api/v1/operations/status	GET	Check system status
+Project Structure
+argus-cybersecurity/
+├── backend/
+│   ├── app/
+│   │   ├── api/endpoints
+│   │   ├── models
+│   │   ├── schemas
+│   │   ├── services
+│   │   ├── config.py
+│   │   └── database.py
+│   ├── requirements.txt
+│   └── .env
+├── frontend/
+│   ├── src/
+│   │   ├── components
+│   │   ├── services
+│   │   └── App.tsx
+│   └── package.json
+└── scripts/
+    ├── test_ai_operations.py
+    └── deployment/
+
+AI Capabilities
+Threat Classification
+
+Ransomware
+
+Phishing
+
+Vulnerability
+
+Zero-Day
+
+APT
+
+DDoS
+
+Data Breach
+
+Severity Levels
+
+Critical
+
+High
+
+Medium
+
+Low
+
+Informational
+
+IOC Extraction
+
+IP addresses
+
+Domains
+
+File hashes (MD5, SHA1, SHA256)
+
+Email addresses
+
+URLs
+
+Deployment
+Docker
+docker-compose up -d
+docker-compose logs -f
+
+Cloud Options
+
+AWS
+
+Google Cloud
+
+Azure
+
+Heroku
+
+Contributing
+
+Contributions are welcome.
+
+Steps:
+
+Fork the repository
+
+Create a feature branch
+
+Commit your changes
+
+Push the branch
+
+Open a pull request
+
+Reporting Issues
+
+Use the GitHub Issues page for bugs or feature requests.
+
+License
+
+This project is distributed under the MIT License.
+
+Security
+
+Input validation for all endpoints
+
+SQL injection protection
+
+CORS configuration
+
+Environment-based secrets
+
+Regular updates and dependency checks
